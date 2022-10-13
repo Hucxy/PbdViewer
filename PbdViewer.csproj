@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8B65C670-8671-440D-8299-4EBF43B81650}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>PbdViewer</RootNamespace>
+    <AssemblyName>PbdViewer</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60DC8134-EBA5-43B8-BCC9-BB4BC16C2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <StartupObject>PbdViewer.App</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DataModel\ControlNode.cs" />
+    <Compile Include="DataModel\DirectoryNode.cs" />
+    <Compile Include="DataModel\EntryNode.cs" />
+    <Compile Include="DataModel\ExternalFunctionsNode.cs" />
+    <Compile Include="DataModel\FileNode.cs" />
+    <Compile Include="DataModel\FunctionNode.cs" />
+    <Compile Include="DataModel\NodeType.cs" />
+    <Compile Include="DataModel\StructureNode.cs" />
+    <Compile Include="DataModel\TreeNode.cs" />
+    <Compile Include="DataModel\VariablesNode.cs" />
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <DependentUpon>Settings.settings</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Uitils\BufferHelper.cs" />
+    <Compile Include="Uitils\CodeArea.cs" />
+    <Compile Include="Uitils\CodeLine.cs" />
+    <Compile Include="Uitils\JmpType.cs" />
+    <Compile Include="Uitils\PbClass\PbEntry.cs" />
+    <Compile Include="Uitils\PbClass\PbEnum.cs" />
+    <Compile Include="Uitils\PbClass\PbFile.cs" />
+    <Compile Include="Uitils\PbClass\PbFunction.cs" />
+    <Compile Include="Uitils\PbClass\PbFunctionDefinition.cs" />
+    <Compile Include="Uitils\PbClass\PbFunctionFlag.cs" />
+    <Compile Include="Uitils\PbClass\PbFunctionParam.cs" />
+    <Compile Include="Uitils\PbClass\PbObject.cs" />
+    <Compile Include="Uitils\PbClass\PbProject.cs" />
+    <Compile Include="Uitils\PbClass\PbReferencedFunction.cs" />
+    <Compile Include="Uitils\PbClass\PbType.cs" />
+    <Compile Include="Uitils\PbClass\PbVariable.cs" />
+    <Compile Include="Uitils\PbClass\PbVariableFlag.cs" />
+    <Compile Include="Uitils\PCodeHelper.cs" />
+    <Compile Include="Uitils\PCode\PCodeParser100.cs" />
+    <Compile Include="Uitils\PCode\PCodeParser105.cs" />
+    <Compile Include="Uitils\PCode\PCodeParser110.cs" />
+    <Compile Include="Uitils\PCode\PCodeParser90.cs" />
+    <Compile Include="Uitils\PCode\PCodeParserBase.cs" />
+    <Compile Include="Uitils\PEHelper.cs" />
+    <Compile Include="ViewModel\WindowViewModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="exe.licenses" />
+    <EmbeddedResource Include="Properties\Resources.resources" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.manifest" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </ApplicationDefinition>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="resoures\004f.bin" />
+    <Resource Include="resoures\0072.bin" />
+    <Resource Include="resoures\0092.bin" />
+    <Resource Include="resoures\00a6.bin" />
+    <Resource Include="resoures\00c1.bin" />
+    <Resource Include="resoures\00ee.bin" />
+    <Resource Include="resoures\011b.bin" />
+    <Resource Include="resoures\013c.bin" />
+    <Resource Include="resoures\0141.bin" />
+    <Resource Include="resoures\0145.bin" />
+    <Resource Include="resoures\014d.bin" />
+    <Resource Include="resoures\014e.bin" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
