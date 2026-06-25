@@ -1,0 +1,11 @@
+# Build output
+bin/
+obj/
+
+# Visual Studio temporary files
+.vs/
+*.user
+*.suo
+
+# Local planning notes
+.plans/

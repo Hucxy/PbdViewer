@@ -18,5 +18,20 @@ namespace PbdViewer.Properties
 				return Settings.defaultInstance;
 			}
 		}
+
+		[global::System.Configuration.UserScopedSettingAttribute()]
+		[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+		[global::System.Configuration.DefaultSettingValueAttribute("GBK")]
+		public global::System.String TextEncoding
+		{
+			get
+			{
+				return (global::System.String)(this["TextEncoding"]);
+			}
+			set
+			{
+				this["TextEncoding"] = value;
+			}
+		}
 	}
 }

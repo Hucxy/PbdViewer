@@ -94,6 +94,7 @@
     <Compile Include="Uitils\PCode\PCodeParser90.cs" />
     <Compile Include="Uitils\PCode\PCodeParserBase.cs" />
     <Compile Include="Uitils\PEHelper.cs" />
+    <Compile Include="Uitils\TextEncodingOptions.cs" />
     <Compile Include="ViewModel\WindowViewModel.cs" />
   </ItemGroup>
   <ItemGroup>

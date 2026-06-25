@@ -697,7 +697,7 @@ namespace PbdViewer.Uitils.PbClass
 					for (; _entryData[j] != 0; j++)
 					{
 					}
-					list.Add(Encoding.Default.GetString(_entryData, num5, j - num5));
+					list.Add(TextEncodingOptions.Ansi.GetString(_entryData, num5, j - num5));
 					j++;
 					num5 = j;
 					num4--;
@@ -710,7 +710,7 @@ namespace PbdViewer.Uitils.PbClass
 					for (; _entryData[j] != 0; j++)
 					{
 					}
-					list2.Add(Encoding.Default.GetString(_entryData, num5, j - num5));
+					list2.Add(TextEncodingOptions.Ansi.GetString(_entryData, num5, j - num5));
 					j++;
 					num5 = j;
 					num4--;
