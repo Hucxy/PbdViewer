@@ -101,7 +101,7 @@ namespace PbdViewer.Uitils.PbClass
 		{
 			if (!IsUnicode)
 			{
-				return Encoding.Default.GetString(buffer, offset, size);
+				return TextEncodingOptions.Ansi.GetString(buffer, offset, size);
 			}
 			return Encoding.Unicode.GetString(buffer, offset, size);
 		}
@@ -110,7 +110,7 @@ namespace PbdViewer.Uitils.PbClass
 		{
 			if (!IsUnicode)
 			{
-				return Encoding.Default.GetString(buffer);
+				return TextEncodingOptions.Ansi.GetString(buffer);
 			}
 			return Encoding.Unicode.GetString(buffer);
 		}

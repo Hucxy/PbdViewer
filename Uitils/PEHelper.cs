@@ -889,7 +889,7 @@ namespace PbdViewer.Uitils
 			}
 			if (Type.Trim().ToUpper() == "DEFAULT")
 			{
-				return Encoding.Default.GetString(Data);
+				return TextEncodingOptions.Ansi.GetString(Data);
 			}
 			if (Type.Trim().ToUpper() == "UNICODE")
 			{

@@ -94,7 +94,7 @@ namespace PbdViewer.Uitils
 			}
 			if (!isUnicode)
 			{
-				return Encoding.Default.GetString(buffer, (int)offset, (int)(num - offset));
+				return TextEncodingOptions.Ansi.GetString(buffer, (int)offset, (int)(num - offset));
 			}
 			return Encoding.Unicode.GetString(buffer, (int)offset, (int)(num - offset));
 		}

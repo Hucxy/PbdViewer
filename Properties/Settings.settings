@@ -1,5 +1,9 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
 <SettingsFile CurrentProfile="(Default)" GeneratedClassNamespace="PbdViewer.Properties" GeneratedClassName="Settings" xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings">
   <Profiles />
-  <Settings />
+  <Settings>
+    <Setting Name="TextEncoding" Type="System.String" Scope="User">
+      <Value Profile="(Default)">GBK</Value>
+    </Setting>
+  </Settings>
 </SettingsFile>

@@ -3,74 +3,150 @@
 	AllowDrop="True"
 	Title="PbdViewer v0.1 - 拖动文件到窗口"
 	Height="600"
-	Width="800"
+	Width="900"
 	PreviewDragOver="MainWindow_OnPreviewDragOver"
 	PreviewDrop="MainWindow_OnPreviewDrop">
 	<Grid
 		Margin="5">
-		<Grid.ColumnDefinitions>
-			<ColumnDefinition
-				Width="300"
-				MinWidth="100" />
-			<ColumnDefinition
-				Width="2" />
-			<ColumnDefinition
-				Width="*"
-				MinWidth="100" />
-		</Grid.ColumnDefinitions>
-		<TreeView
-			Grid.Column="0"
-			ItemsSource="{Binding Nodes}"
-			SelectedItemChanged="TreeView_OnSelectedItemChanged"
-			KeyDown="UIElement_OnKeyDown">
-			<ItemsControl.ItemContainerStyle>
-				<Style
-					TargetType="{x:Type TreeViewItem}">
-					<Setter
-						Property="TreeViewItem.IsExpanded"
-						Value="{Binding IsExpanded}" />
-					<Setter
-						Property="TreeViewItem.IsSelected"
-						Value="{Binding IsSelected}" />
-				</Style>
-			</ItemsControl.ItemContainerStyle>
-			<ItemsControl.ItemTemplate>
-				<HierarchicalDataTemplate
-					ItemsSource="{Binding Children}">
-					<Grid
-						VerticalAlignment="Top"
-						HorizontalAlignment="Stretch">
-						<DockPanel>
-							<TextBlock
-								HorizontalAlignment="Stretch"
-								Margin="3,0,0,0"
-								VerticalAlignment="Center"
-								Text="{Binding Name}" />
-						</DockPanel>
-					</Grid>
-				</HierarchicalDataTemplate>
-			</ItemsControl.ItemTemplate>
-		</TreeView>
-		<GridSplitter
-			Grid.Column="1"
-			Background="#FFFAEBD7"
-			HorizontalAlignment="Stretch"
-			VerticalAlignment="Stretch" />
-		<Grid
-			Column="2">
-			<Image
-				Name="Image"
-				HorizontalAlignment="Center"
+		<Grid.RowDefinitions>
+			<RowDefinition
+				Height="Auto" />
+			<RowDefinition
+				Height="Auto" />
+			<RowDefinition
+				Height="*" />
+		</Grid.RowDefinitions>
+		<DockPanel
+			Grid.Row="0"
+			LastChildFill="True"
+			Margin="0,0,0,5">
+			<StackPanel
+				DockPanel.Dock="Left"
+				Orientation="Horizontal">
+				<TextBlock
+					Text="文本编码："
+					VerticalAlignment="Center"
+					Margin="0,0,5,0" />
+				<ComboBox
+					x:Name="EncodingComboBox"
+					Width="140"
+					SelectionChanged="EncodingComboBox_OnSelectionChanged" />
+			</StackPanel>
+			<Button
+				DockPanel.Dock="Right"
+				x:Name="ExportButton"
+				Content="导出全部"
+				Padding="8,2"
+				Click="ExportButton_OnClick" />
+		</DockPanel>
+		<DockPanel
+			Grid.Row="1"
+			LastChildFill="True"
+			Margin="0,0,0,5">
+			<Button
+				DockPanel.Dock="Right"
+				x:Name="SearchPrevButton"
+				Content="上一个"
+				Padding="6,2"
+				Margin="3,0,0,0"
+				Click="SearchPrevButton_OnClick" />
+			<Button
+				DockPanel.Dock="Right"
+				x:Name="SearchNextButton"
+				Content="下一个"
+				Padding="6,2"
+				Margin="3,0,0,0"
+				Click="SearchNextButton_OnClick" />
+			<TextBlock
+				DockPanel.Dock="Right"
+				x:Name="SearchStatus"
+				Text="就绪"
 				VerticalAlignment="Center"
-				Stretch="None" />
-			<RichTextBox
-				Name="RichTextBox"
-				VerticalScrollBarVisibility="Auto"
-				FontFamily="Courier New,微软雅黑">
-				<RichTextBox.Document>
-					<FlowDocument />
-				</RichTextBox.Document>
-			</RichTextBox>
+				Margin="8,0,0,0" />
+			<CheckBox
+				DockPanel.Dock="Right"
+				x:Name="RegexCheckBox"
+				Content="正则"
+				VerticalAlignment="Center"
+				Margin="8,0,0,0" />
+			<CheckBox
+				DockPanel.Dock="Right"
+				x:Name="CaseCheckBox"
+				Content="区分大小写"
+				VerticalAlignment="Center"
+				Margin="8,0,0,0" />
+			<TextBox
+				x:Name="SearchBox"
+				Margin="0,0,5,0"
+				KeyDown="SearchBox_OnKeyDown" />
+		</DockPanel>
+		<Grid
+			Grid.Row="2">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition
+					Width="300"
+					MinWidth="100" />
+				<ColumnDefinition
+					Width="2" />
+				<ColumnDefinition
+					Width="*"
+					MinWidth="100" />
+			</Grid.ColumnDefinitions>
+			<TreeView
+				x:Name="MainTreeView"
+				Grid.Column="0"
+				ItemsSource="{Binding Nodes}"
+				SelectedItemChanged="TreeView_OnSelectedItemChanged"
+				KeyDown="UIElement_OnKeyDown">
+				<ItemsControl.ItemContainerStyle>
+					<Style
+						TargetType="{x:Type TreeViewItem}">
+						<Setter
+							Property="TreeViewItem.IsExpanded"
+							Value="{Binding IsExpanded}" />
+						<Setter
+							Property="TreeViewItem.IsSelected"
+							Value="{Binding IsSelected}" />
+					</Style>
+				</ItemsControl.ItemContainerStyle>
+				<ItemsControl.ItemTemplate>
+					<HierarchicalDataTemplate
+						ItemsSource="{Binding Children}">
+						<Grid
+							VerticalAlignment="Top"
+							HorizontalAlignment="Stretch">
+							<DockPanel>
+								<TextBlock
+									HorizontalAlignment="Stretch"
+									Margin="3,0,0,0"
+									VerticalAlignment="Center"
+									Text="{Binding Name}" />
+							</DockPanel>
+						</Grid>
+					</HierarchicalDataTemplate>
+				</ItemsControl.ItemTemplate>
+			</TreeView>
+			<GridSplitter
+				Grid.Column="1"
+				Background="#FFFAEBD7"
+				HorizontalAlignment="Stretch"
+				VerticalAlignment="Stretch" />
+			<Grid
+				Column="2">
+				<Image
+					Name="Image"
+					HorizontalAlignment="Center"
+					VerticalAlignment="Center"
+					Stretch="None" />
+				<RichTextBox
+					Name="RichTextBox"
+					VerticalScrollBarVisibility="Auto"
+					FontFamily="Courier New,微软雅黑">
+					<RichTextBox.Document>
+						<FlowDocument />
+					</RichTextBox.Document>
+				</RichTextBox>
+			</Grid>
 		</Grid>
 	</Grid>
 </Window>
